@@ -1,0 +1,73 @@
+﻿<Window x:Class="GalleryAK.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GalleryAK"
+        xmlns:integration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        mc:Ignorable="d"
+        xmlns:fw ="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        Icon="cd.ico" 
+        ContentRendered="Window_ContentRendered"
+        WindowStyle="None"
+        
+        Background="Transparent"
+        Title="AK's SlideShow WPF v3.2" Height="360" Width="640" MouseWheel="MouseWheel2"
+               
+        KeyDown="Window_KeyDown"
+        MouseLeftButtonUp="OnMouseLeftButtonUp"
+        MouseLeftButtonDown="OnMouseLeftButtonDown"
+        MouseMove="OnMouseMove"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Courier">
+    <WindowChrome.WindowChrome>
+        <WindowChrome     
+        CaptionHeight="1"  
+        CornerRadius ="0"
+        ResizeBorderThickness="4"         
+        GlassFrameThickness="0">
+        </WindowChrome>
+    </WindowChrome.WindowChrome>
+
+      
+        <Grid Name="Grid1" >
+
+        <Image Height="auto" Margin="0,0,0,0"  Width="auto" Name="ImageControl" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform"/>
+        <TextBlock Name="TextBlockControl" Text="" Width="auto" Height="auto" Margin="10,0,0,0" Foreground="white" Visibility="Visible" FontSize="20" FontFamily="consolas">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="gold"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <TextBlock Name="MotdBlockControl" Text="" Width="auto" Height="auto" Margin="10,50,10,69" Foreground="LightGreen" Visibility="Visible" FontSize="40" FontFamily="consolas">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0" Color="red"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <ProgressBar Name="progressBar" HorizontalAlignment="Left" Height="16" Margin="5,5,0,0" VerticalAlignment="Top" Width="151" Minimum="0" Maximum="100" Visibility="Visible"/>
+        <Grid.ContextMenu>
+            <ContextMenu Opened="ContextMenu_Opened">
+                <MenuItem Header="Pause" Click="ContextMenuPause" IsCheckable="True" Name="PauseXaml"/>
+                <MenuItem Header="Play" Click="ContextMenuPlay" IsCheckable="True" Name="PlayXaml"/>
+                <MenuItem Header="Next" Click="ContextMenuNext"/>
+                <MenuItem Header="Previous" Click="ContextMenuPrev"/>
+                <MenuItem Header="Delete" Click="ContextMenuDelete"/>
+                <MenuItem Header="Open Folder" Click="ContextMenuOpenFolder"/>
+                <MenuItem Header="Private Mode (disable accidental Google Search)" IsCheckable="True" Name="PrivateModeCheckBox" />
+                <MenuItem Header="Change Timer" Click="ContextMenuChangeTimer"/>
+                <MenuItem Header="Full Screen Toggle" Click="ContextMenuFullScreen"/>
+                <MenuItem Header="Randomize" Click="CheckedRandomize" IsCheckable="true" Name="ContextMenuCheckBox"/>
+                <MenuItem Header="Benchmark" Click="Benchmark_Click"/>
+                <MenuItem Header="Image Info" IsCheckable="true" Checked="DisplayInfo_Checked" Unchecked="DisplayInfo_Unchecked"/>
+                <MenuItem Header="Google Image Search" Click="GoogleImageSearch_Click"/>
+                <MenuItem Header="Open in Explorer" Click="OpenInExplorer"/>
+                <MenuItem Header="Allow Monitor sleep while playing." IsCheckable="True" Unchecked="AllowMonitorSleepPlaying_Checked" Checked="AllowMonitorSleepPlaying_Checked" Name="AllowSleepPlayingXaml"/>
+                <MenuItem Header="Allow Monitor sleep while paused." IsCheckable="True" Unchecked="AllowMonitorSleepPaused_Checked" Checked="AllowMonitorSleepPaused_Checked" Name="AllowSleepPausedXaml"/>
+                <MenuItem Header="Allow Monitor sleep in full screen only" IsCheckable="True" Unchecked="AllowMonitorSleepFullScreenOnly_Checked" Checked="AllowMonitorSleepFullScreenOnly_Checked" Name="AllowSleepFullScreenXaml"/>
+                <MenuItem Header="Enable MOTD" IsCheckable="True" Unchecked="EnableMotd" Checked="EnableMotd" Name="MotdXaml"/>
+                <MenuItem Header="Exit" Click="ContextMenuExit"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
+    </Grid>
+
+    
+</Window>
